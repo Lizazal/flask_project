@@ -1,10 +1,6 @@
-from flask import Flask
-
-# Создаем объект приложения Flask
-app = Flask(__name__)
+from app import app
 
 
-# Определяем маршрут и привязываем его к функции
 @app.route('/')
 def hello_flask():
     return "Hello, Flask!"
@@ -23,7 +19,7 @@ def info():
 @app.route('/calc/<a>/<b>')
 def calc(a, b):
     try:
-        return f"The sum of {a} and {b} is {int(a)+int(b)}."
+        return f"The sum of {a} and {b} is {int(a) + int(b)}."
     except ValueError:
         return "I can't calculate this one."
 
@@ -41,8 +37,3 @@ def no_reverse():
 @app.route('/user/<string:name>/<int:age>')
 def user(name, age):
     return f"Hello, {name}. You are {age} years old."
-
-
-# Запуск приложения
-if __name__ == "__main__":
-    app.run(debug=True)
