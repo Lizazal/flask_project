@@ -1,9 +1,10 @@
 from app import app
+from flask import render_template
 
 
 @app.route('/')
-def hello_flask():
-    return "Hello, Flask!"
+def home():
+    return render_template('index.html')
 
 
 @app.route('/hello')
@@ -11,9 +12,14 @@ def hello():
     return "Hello, world!"
 
 
-@app.route('/info')
-def info():
-    return "This is an informational page."
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 
 @app.route('/calc/<a>/<b>')
