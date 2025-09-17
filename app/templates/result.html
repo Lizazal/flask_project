@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Submission Result{% endblock %}
+
+{% block content %}
+    <h1>Submission Successful</h1>
+    <p>Thank you, <strong>{{ name }}</strong>!</p>
+    <p>We have sent a confirmation to <strong>{{ email }}</strong>.</p>
+    <a href="/form">Go back to form</a>
+{% endblock %}

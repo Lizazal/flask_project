@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 
 
 @app.route('/')
@@ -43,3 +43,18 @@ def no_reverse():
 @app.route('/user/<string:name>/<int:age>')
 def user(name, age):
     return f"Hello, {name}. You are {age} years old."
+
+
+@app.route("/form")
+def form():
+    return render_template("form.html")
+
+
+@app.route("/submit", methods=["POST", "GET"])
+def submit():
+    if request.method == "POST":
+        name = request.form.get("name")  # Получаем имя из формы
+        email = request.form.get("email")  # Получаем email из формы
+        return render_template("result.html", name=name, email=email)
+    else:
+        return redirect(url_for("form"))  # Если запрос GET, возвращаем на форму
