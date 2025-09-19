@@ -6,5 +6,17 @@
     <h1>Submission Successful</h1>
     <p>Thank you, <strong>{{ name }}</strong>!</p>
     <p>We have sent a confirmation to <strong>{{ email }}</strong>.</p>
+	<p>Your favorite color is: <span style="color: {{ color }}">{{ color }}</span>.</p>
+	<p>Your profession is: {{ profession }}.</p>
+	<p>Your hobbies: {{ hobbies | join(', ') }}.</p>
+	<p>Your level: {{ level }}.</p>
+
+	{% if superpower %}
+		<p>Your secret superpower: <em>{{ superpower }}</em> 🦸</p>
+    {% endif %}
+
+    <hr>
+    <p><strong>Random joke:</strong> {{ joke }}</p>
+
     <a href="/form">Go back to form</a>
 {% endblock %}

@@ -1,16 +1,54 @@
 {% extends 'base.html' %}
 
-{% block title %}Form Example{% endblock %}
+{% block title %}Funny Form{% endblock %}
 
 {% block content %}
-    <h1>Enter Your Details</h1>
-    <form action="/submit" method="POST">
-        <label for="name">Name:</label>
+	<h1 class="funny-title">😄 Enter Your Details! 🦄</h1>
+	{% if errors %}
+		<div class="funny-errors" role="alert" aria-live="polite">
+			<ul>
+			{% for e in errors %}
+				<li>{{ e }}</li>
+			{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+    <form action="/submit" method="POST" class="funny-form" novalidate>
+        <label for="name">Your Super Cool Name:</label>
         <input type="text" id="name" name="name" required><br><br>
 
-        <label for="email">Email:</label>
+        <label for="email">Your Awesome Email:</label>
         <input type="email" id="email" name="email" required><br><br>
 
-        <button type="submit">Submit</button>
+		<label for="color">Your Favorite Color:</label>
+        <input type="color" id="color" name="color" required><br><br>
+
+		<label for="profession">Your Profession:</label>
+		<select id="profession" name="profession">
+			<option value="developer">Developer</option>
+			<option value="designer">Designer</option>
+			<option value="manager">Manager</option>
+		</select>
+
+		<p>Your Hobbies:</p>
+		<label class="funny-check"><input type="checkbox" name="hobbies" value="books">Books</label>
+		<label class="funny-check"><input type="checkbox" name="hobbies" value="sports">Sports</label>
+		<label class="funny-check"><input type="checkbox" name="hobbies" value="games">Games</label>
+
+		<p>Your Level:</p>
+		<label class="funny-radio"><input type="radio" name="level" value="beginner"> Beginner</label>
+		<label class="funny-radio"><input type="radio" name="level" value="advanced"> Advanced</label><br><br>
+
+        <button type="submit" class="funny-button">🚀 Let's Go!</button>
+
+		<input type="checkbox" id="surprise-button" class="visually-hidden" aria-hidden="true">
+        <label for="surprise-button" class="surprise-button">Press me! 😉</label>
+
+		<div class="surprise-panel">
+            <p class="surprise-text">🎉 Surprise! Secret field:</p>
+            <label for="superpower">Your Secret Superpower:</label>
+            <input type="text" id="superpower" name="superpower">
+            <p class="surprise-note">🤫 We won't tell anyone!</p>
+        </div>
     </form>
 {% endblock %}
